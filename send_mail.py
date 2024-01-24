@@ -13,6 +13,7 @@ from datetime import datetime
 load_dotenv()
 pass_google = os.environ.get('PASS_GOOGLE_AUTHENTICATION')
 sender_gmail = os.environ.get('SENDER_GMAIL')
+email_recipient = os.environ.get('EMAIL_RECIPIENT')
 attachment_path = './Vendas.xlsx'
 attachment_name = 'Vendas.xlsx'
 
@@ -35,7 +36,7 @@ def send_mail():
     msg = MIMEMultipart()
     msg['Subject'] = f'Planilha de vendas {datetime.today().strftime("%d/%m/%Y")}'
     msg['From'] = f'{sender_gmail}'
-    msg['To'] = f'{sender_gmail}'
+    msg['To'] = f'{email_recipient}'
     password = f'{pass_google}' 
     msg.attach(MIMEText(email_body, 'html'))
 

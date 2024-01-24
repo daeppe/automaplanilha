@@ -1,10 +1,7 @@
 ## Code here
-from dotenv import load_dotenv
 import os
 import pandas as pd
-
-load_dotenv()
-pass_google = os.environ.get('PASS_GOOGLE_AUTHENTICATION')
+from send_mail import send_mail
 
 files_path = './bases'
 files = os.listdir(files_path)
@@ -20,3 +17,6 @@ for file_name in files:
 consolidated_table = consolidated_table.sort_values(by='Data de Venda')
 consolidated_table = consolidated_table.reset_index(drop=True)
 consolidated_table.to_excel('Vendas.xlsx', index=False)
+print('Planilha gerada.')
+
+send_mail()
